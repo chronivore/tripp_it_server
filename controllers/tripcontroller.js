@@ -67,7 +67,10 @@ router.put("/:id", validateSession, (req, res) => {
 
 router.get("/", validateSession, (req, res) => { 
   Trip.findAll()
-    .then( (log) => res.status(200).json(log) )
+    .then( (trip) => { 
+      res.status(200).json(trip) 
+      console.log(trip);
+    })
     .catch( (err) => res.status(500).json(err) )
   })
 
@@ -75,7 +78,7 @@ router.get("/:id", validateSession, (req, res) => {
   const query = { where: { id: req.params.id } };
 
   Trip.findOne(query)
-    .then((log) => res.status(200).json(log))
+    .then((trip) => res.status(200).json(trip))
     .catch((err) => res.status(500).json({ error: err }));
 });
 
