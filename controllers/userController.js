@@ -17,7 +17,7 @@ router.post('/signup',function(req, res) {
 
             let token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60 * 60 * 24})
  
-//New comment
+//New comment Hello
             res.json({
                 user: user,
                 message: 'User successfully created',
