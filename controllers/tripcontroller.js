@@ -65,6 +65,12 @@ router.put("/:id", validateSession, (req, res) => {
     .catch((err) => res.status(500).json({ error: err }));
 });
 
+router.get("/", validateSession, (req, res) => { 
+  Trip.findAll(query)
+    .then( (log) => res.status(200).json(log) )
+    .catch( (err) => res.status(500).json(err) )
+  })
+
 router.get("/:id", validateSession, (req, res) => {
   const query = { where: { id: req.params.id } };
 
