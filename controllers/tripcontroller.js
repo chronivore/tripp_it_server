@@ -66,7 +66,7 @@ router.put("/:id", validateSession, (req, res) => {
 });
 
 router.get("/", validateSession, (req, res) => { 
-  Trip.findAll(query)
+  Trip.findAll()
     .then( (log) => res.status(200).json(log) )
     .catch( (err) => res.status(500).json(err) )
   })
