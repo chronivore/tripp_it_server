@@ -65,11 +65,18 @@ router.put("/:id", validateSession, (req, res) => {
     .catch((err) => res.status(500).json({ error: err }));
 });
 
+router.get("/", validateSession, (req, res) => {
+  /* let userId = req.user.id; */
+  Trip.findAll( /* {where : { userId: userId }} */ )
+    .then((trips) => res.status(200).json(trips))
+    .catch((err) => res.status(500).json({ error: err }));
+});
+
 router.get("/:id", validateSession, (req, res) => {
   const query = { where: { id: req.params.id } };
 
   Trip.findOne(query)
-    .then((log) => res.status(200).json(log))
+    .then((trip) => res.status(200).json(trip))
     .catch((err) => res.status(500).json({ error: err }));
 });
 
