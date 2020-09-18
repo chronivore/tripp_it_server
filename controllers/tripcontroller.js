@@ -74,8 +74,8 @@ router.get("/:id", validateSession, (req, res) => {
 });
 
 router.get("/", validateSession, (req, res) => {
-  // let userId= req.user.id;
-  Trip.findAll(/* {where: { userId: userId } }*/)
+  let userId= req.user.id;
+  Trip.findAll( {where: { userId: userId } })
   .then((log) => res.status(200).json(log))
   .catch((err) => res.status(500).json({ error: err }));
  

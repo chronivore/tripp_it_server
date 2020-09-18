@@ -1,5 +1,4 @@
 const sequelize = require("../db");
-
 module.exports = (sequelize, DataTypes) => {
     const Trip = sequelize.define('trip', {
         fromLocation: {
@@ -24,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         tripType: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         userId: {
             type: DataTypes.INTEGER,
