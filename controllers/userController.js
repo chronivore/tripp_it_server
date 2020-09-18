@@ -4,7 +4,7 @@ const User = require('../db').import('../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-router.post('/signup', (req, res) => {
+router.post('/signup',function(req, res) {
 
     User.create({
         firstName: req.body.user.firstName,
@@ -27,7 +27,7 @@ router.post('/signup', (req, res) => {
     .catch(err => res.status(500).json({error: err}))
 })
 
-router.post('/login', (req, res) => {
+router.post('/login', function(req, res) {
     User.findOne({
         where: {
             email: req.body.user.email
