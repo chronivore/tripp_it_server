@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         tripType: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         userId: {
             type: DataTypes.INTEGER,

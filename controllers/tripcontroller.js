@@ -73,4 +73,13 @@ router.get("/:id", validateSession, (req, res) => {
     .catch((err) => res.status(500).json({ error: err }));
 });
 
+
+router.get("/", validateSession, (req, res) => {
+  let userid = req.user.id
+  Trip.findAll(({
+    // where: {userId: userid}
+}))
+  .then(trip => {res.status(200).json(trip)})
+  .catch(err => res.status(500).json({error:err}))
+})
 module.exports = router;
